@@ -1,12 +1,53 @@
-# React + Vite
+Portfolio – Daksh Goswami
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 A modern and responsive personal portfolio website built using React.js, Tailwind CSS, and Vercel.
+This portfolio showcases my skills, projects, and contact details for recruiters and companies looking to hire a Web Developer.
 
-Currently, two official plugins are available:
+📌 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Responsive and modern UI (Mobile-first design)
 
-## Expanding the ESLint configuration
+Smooth navigation between sections (Home, About, Projects, Contact)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Contact button with email integration
+
+Animated message send confirmation
+
+Deployed on Vercel
+
+🛠️ Tech Stack
+
+Frontend: React.js, Tailwind CSS
+
+Deployment: Vercel
+
+Version Control: Git & GitHub
+
+📂 Sections
+
+Home: Introduction with role & photo
+
+About: Brief bio and career goals
+
+Projects: Highlighted web development projects with live demos
+
+Contact: Email, phone number, and send-message functionality
+
+🚀 Deployment
+
+This portfolio is live here:
+👉 https://portfolio-iota-puce-25.vercel.app/
+
+📞 Contact Me
+
+Email: your-email@example.com
+
+Phone: +91 9876543210
+
+🤝 Contributing
+
+This is a personal project, but suggestions and improvements are always welcome!
+
+📜 License
+
+This project is free to use for learning and inspiration. Please don’t copy it directly without permission.
