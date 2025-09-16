@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: port1;
+  src: url(./assets/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: port2;
+  src: url(./assets/Raleway-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: port3;
+  src: url(./assets/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: port4;
+  src: url(./assets/Anton-Regular.ttf);
+}
+
+#page1-inside{
+  position: relative;
+  perspective: 2000px;
+}
+
+#section2{
+  position: relative;
+  perspective: 2000px;
+}
+
+#tiltDiv{
+  width: fit-content;
+}
