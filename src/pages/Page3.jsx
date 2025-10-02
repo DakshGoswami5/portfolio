@@ -99,7 +99,7 @@ const Page3 = () => {
               </p>
               <div className="flex gap-4 mt-6 justify-center md:justify-start">
                 <a
-                  href="#"
+                  href="https://moodyplayer-frontend.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-xl text-white font-semibold 
@@ -110,7 +110,7 @@ const Page3 = () => {
                   🎶 Live Demo
                 </a>
                 <a
-                  href="#"
+                  href="https://github.com/DakshGoswami5/moodyplayer-frontend"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-xl text-white font-semibold 
