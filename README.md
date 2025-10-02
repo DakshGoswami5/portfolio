@@ -40,9 +40,7 @@ This portfolio is live here:
 
 📞 Contact Me
 
-Email: your-email@example.com
-
-Phone: +91 9876543210
+Email: dakshgoswami2@example.com
 
 🤝 Contributing
 
