@@ -38,8 +38,9 @@ const Page3 = () => {
               <h2 className="text-3xl font-bold text-white font-[port2]">Ecommerce</h2>
               <p className="text-[#2563eb] mt-2">Modern Online Store</p>
               <p className="text-[#91a0b5] mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id
-                metus a ligula volutpat lacinia.
+                A modern e-commerce platform built with React, Redux, and Tailwind CSS.
+
+Features: Admin/User registration & login, product management create, update, delete and Add to Cart functionality.
               </p>
               <div className="flex gap-4 mt-6 justify-center md:justify-start">
                 <a
@@ -94,8 +95,11 @@ const Page3 = () => {
               <h2 className="text-3xl font-bold text-white font-[port2]">Moody Player</h2>
               <p className="text-[#2563eb] mt-2">Personalized Music Player</p>
               <p className="text-[#91a0b5] mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                commodo nunc sed orci hendrerit.
+                A smart music player using Node.js, Express, MongoDB, Mongoose, ImageKit, React, and Tailwind CSS.
+
+Detects user's mood and plays songs accordingly.
+
+Users can play music directly based on mood for a personalized experience.
               </p>
               <div className="flex gap-4 mt-6 justify-center md:justify-start">
                 <a
