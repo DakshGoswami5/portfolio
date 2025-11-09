@@ -147,14 +147,13 @@ Users can play music directly based on mood for a personalized experience.
             {/* Right - Text */}
             <div className="md:w-1/2 md:ml-5 text-center md:text-left">
               <h2 className="text-3xl font-bold text-white font-[port2]">Social Media</h2>
-              <p className="text-[#2563eb] mt-2">Connect with People</p>
+              <p className="text-[#2563eb] mt-2">Generate AI Caption</p>
               <p className="text-[#91a0b5] mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                imperdiet mauris ut orci cursus tincidunt.
+                A full-stack social media application with Authentication that uses AI to generate captions for images automatically. Built with the MERN stack and integrated with Google Gemini AI and ImageKit CDN.
               </p>
               <div className="flex gap-4 mt-6 justify-center md:justify-start">
                 <a
-                  href="#"
+                  href="https://social-media-gamma-opal.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-xl text-white font-semibold 
@@ -165,7 +164,7 @@ Users can play music directly based on mood for a personalized experience.
                   🌐 Live Demo
                 </a>
                 <a
-                  href="#"
+                  href="https://github.com/DakshGoswami5/Social-Media"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-xl text-white font-semibold 

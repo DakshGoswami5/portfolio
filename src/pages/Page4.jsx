@@ -69,12 +69,12 @@ const Page4 = () => {
             <p>
               Email:{" "}
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=goswamibusiness005@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=dakshgoswami2@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#2563eb] hover:underline"
               >
-                goswamibusiness005@gmail.com
+                dakshgoswami2@gmail.com
               </a>
             </p>
             <p>
