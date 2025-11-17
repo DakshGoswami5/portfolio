@@ -15,9 +15,9 @@ const Page3 = () => {
         {/* Projects Container */}
         <div className="flex flex-col gap-20">
           {/* Project 1 - Ecommerce */}
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          {/*<div className="flex flex-col md:flex-row items-center gap-10">
             {/* Left - Image */}
-            <div className="md:w-1/2 md:mr-5 flex flex-col items-center">
+            {/*<div className="md:w-1/2 md:mr-5 flex flex-col items-center">
               <img
                 src="/project1.jpg"
                 alt="Ecommerce Project"
@@ -34,7 +34,7 @@ const Page3 = () => {
               </div>
             </div>
             {/* Right - Text */}
-            <div className="md:w-1/2 md:ml-5 text-center md:text-left">
+            {/*<div className="md:w-1/2 md:ml-5 text-center md:text-left">
               <h2 className="text-3xl font-bold text-white font-[port2]">Ecommerce</h2>
               <p className="text-[#2563eb] mt-2">Modern Online Store</p>
               <p className="text-[#91a0b5] mt-4">
