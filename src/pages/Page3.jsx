@@ -199,12 +199,16 @@ Users can play music directly based on mood for a personalized experience.
               <h2 className="text-3xl font-bold text-white font-[port2]">ChatGPT</h2>
               <p className="text-[#2563eb] mt-2">AI-Powered Assistant</p>
               <p className="text-[#91a0b5] mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                posuere justo sed eros interdum faucibus.
+                🧠 AI ChatBot
+
+A full-stack AI chatbot that remembers the recent messages of each user during the session and gives context-aware responses. Built with React, Node.js, Express, and Socket.IO for real-time communication, and powered by the Gemini API for generating replies.
+Each user gets their own isolated chat memory with a limited message context for efficient performance.
+
+Tech Used: React, Node.js, Express, Socket.IO, Gemini API, Render, Vercel
               </p>
               <div className="flex gap-4 mt-6 justify-center md:justify-start">
                 <a
-                  href="#"
+                  href="https://chat-bot-omega-amber.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-xl text-white font-semibold 
@@ -215,7 +219,7 @@ Users can play music directly based on mood for a personalized experience.
                   🤖 Live Demo
                 </a>
                 <a
-                  href="#"
+                  href="https://github.com/DakshGoswami5/ChatBot"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-2 rounded-xl text-white font-semibold 
