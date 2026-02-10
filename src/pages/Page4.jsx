@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 
@@ -38,12 +39,13 @@ const Page4 = () => {
           {/* Direct Connect Buttons */}
           <div className="flex gap-4 mt-4 justify-center md:justify-start">
             <a
-              href="mailto:dakshgoswami2@gmail.com?subject=Hiring%20Inquiry%20-%20Portfolio&body=Hello%20Daksh,%0D%0A%0D%0AI%20would%20like%20to%20connect%20with%20you."
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=dakshgoswami2@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-2 bg-[#2563eb] text-white rounded-lg hover:bg-[#1d4ed8] transition font-[port2]"
             >
               Email
             </a>
-
             <a
               href="https://www.linkedin.com/in/daksh-goswami-"
               target="_blank"
