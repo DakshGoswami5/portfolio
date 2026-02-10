@@ -32,13 +32,12 @@ const Header = () => {
 
       <div className="fixed top-[10%] sm:top-[8%] right-[8%] z-10 font-[port1]">
         <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=goswamibusiness005@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border-2 border-white bg-black text-white px-3 py-1 sm:px-5 sm:py-2 md:px-6 md:py-3 rounded-full shadow-lg hover:scale-105 cursor-pointer transform transition duration-300 text-sm sm:text-base md:text-lg"
-        >
-          Hire me
-        </a>
+  href="mailto:goswamibusiness005@gmail.com?subject=Hiring%20Inquiry%20-%20Portfolio&body=Hello%20Daksh,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20an%20opportunity%20with%20you."
+  className="border-2 border-white bg-black text-white px-3 py-1 sm:px-5 sm:py-2 md:px-6 md:py-3 rounded-full shadow-lg hover:scale-105 cursor-pointer transform transition duration-300 text-sm sm:text-base md:text-lg"
+>
+  Hire me
+</a>
+
       </div>
     </>
   );
