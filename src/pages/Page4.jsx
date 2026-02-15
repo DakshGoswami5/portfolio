@@ -1,144 +1,347 @@
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 
 const Page4 = () => {
   const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
 
-  const handleSubmit = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    // Animate heading
+    gsap.from(".contactHeading", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".contactHeading",
+        start: "top 80%",
+        end: "top 50%",
+        scrub: 1,
+      },
+    });
+
+    // Animate left content
+    gsap.from(".leftContent", {
+      opacity: 0,
+      x: -50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".leftContent",
+        start: "top 75%",
+        end: "top 45%",
+        scrub: 1,
+      },
+    });
+
+    // Animate right form
+    gsap.from(".rightForm", {
+      opacity: 0,
+      x: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".rightForm",
+        start: "top 75%",
+        end: "top 45%",
+        scrub: 1,
+      },
+    });
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setSent(true);
-    setTimeout(() => setSent(false), 3000); // 3 sec baad message gayab
+    
+    // Reset form
+    setFormData({ name: "", email: "", message: "" });
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => setSent(false), 3000);
+    
+    // Submit form
+    e.target.submit();
   };
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const socialLinks = [
+    {
+      name: "Email",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      link: "https://mail.google.com/mail/?view=cm&fs=1&to=dakshgoswami2@gmail.com",
+      color: "hover:bg-white hover:text-black"
+    },
+    {
+      name: "LinkedIn",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      ),
+      link: "https://www.linkedin.com/in/daksh-goswami-",
+      color: "hover:bg-blue-600"
+    },
+    {
+      name: "GitHub",
+      icon: (
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg>
+      ),
+      link: "https://github.com/DakshGoswami5",
+      color: "hover:bg-gray-700"
+    },
+  ];
+
   return (
-    <div id="contact" className="bg-[#ffffff] flex items-center justify-center">
-      <div className="w-[95%] mb-8 bg-[#0f172a] rounded-3xl shadow-xl p-10 mx-auto flex flex-col md:flex-row gap-10">
-        {/* Left Side - Text */}
-        <div className="md:w-1/2 flex flex-col justify-center text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-bold text-white leading-snug font-[port2]">
-            Your Next <span className="text-[#2563eb]">Project</span> Deserves
-            The
-            <span className="text-[#2563eb]"> Best Execution 🚀</span>
-          </h2>
+    <div id="contact" className="bg-black min-h-screen py-20 md:py-32 px-6 md:px-12 relative overflow-hidden">
+      
+      {/* Animated background elements */}
+      <div className="absolute top-20 left-20 w-72 h-72 bg-white/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
 
-          <p className="text-[#91a0b5] mt-4 font-[port2] text-lg">
-            Let’s turn your ideas into reality together.
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        {/* Heading */}
+        <div className="contactHeading text-center mb-16 md:mb-24">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-[port2] font-bold text-white mb-6">
+            Let's <span className="text-gray-500">Connect</span>
+          </h1>
+          <div className="w-20 h-1 bg-white mx-auto mb-6"></div>
+          <p className="text-gray-400 text-base md:text-lg font-[port1] max-w-2xl mx-auto">
+            Have a project in mind? Let's discuss how we can work together
           </p>
-          <p className="text-[#91a0b5] font-[port2] text-lg mt-2">
-            Whether it’s a sleek frontend, a powerful backend, or a complete
-            full-stack solution — I can help you bring it to life.
-          </p>
-          <p className="text-[#2563eb] font-[port2] text-lg mt-2">
-            Let’s create something meaningful together.
-          </p>
+        </div>
 
-          <p className="text-white font-medium mt-6 font-[port3]">
-            Prefer Direct Connect ?
-          </p>
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+          
+          {/* Left Side - Info */}
+          <div className="leftContent space-y-8">
+            
+            {/* Main CTA Text */}
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-[port2] font-bold text-white leading-tight">
+                Your Next Project Deserves{" "}
+                <span className="text-white">The Best Execution</span>
+                <span className="text-4xl ml-2">🚀</span>
+              </h2>
+              
+              <p className="text-gray-400 font-[port1] text-base md:text-lg leading-relaxed">
+                Whether it's a sleek frontend, a powerful backend, or a complete full-stack solution — 
+                I can help you bring your vision to life.
+              </p>
 
-          {/* Direct Connect Buttons */}
-          <div className="flex gap-4 mt-4 justify-center md:justify-start">
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=dakshgoswami2@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2 bg-[#2563eb] text-white rounded-lg hover:bg-[#1d4ed8] transition font-[port2]"
-            >
-              Email
-            </a>
-            <a
-              href="https://www.linkedin.com/in/daksh-goswami-"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2 bg-[#1e293b] text-white rounded-lg hover:bg-[#334155] transition font-[port2]"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/DakshGoswami5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2 bg-[#1e293b] text-white rounded-lg hover:bg-[#334155] transition font-[port2]"
-            >
-              GitHub
-            </a>
+              <p className="text-white font-[port1] text-base md:text-lg font-semibold">
+                Let's create something meaningful together. ✨
+              </p>
+            </div>
+
+            {/* Quick Connect Buttons */}
+            <div>
+              <p className="text-gray-500 font-[port1] text-sm uppercase tracking-widest mb-4">
+                Quick Connect
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group flex items-center gap-2 px-6 py-3 bg-zinc-900 border border-zinc-800 text-white font-[port1] font-medium rounded-full transition-all duration-300 ${social.color} hover:scale-105 hover:border-white`}
+                  >
+                    {social.icon}
+                    <span>{social.name}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Info Cards */}
+            <div className="space-y-4">
+              <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-white transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="text-white group-hover:scale-110 transition-transform">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-sm font-[port1] mb-1">Email</p>
+                    <a
+                      href="mailto:dakshgoswami2@gmail.com"
+                      className="text-white font-[port1] hover:text-gray-300 transition-colors"
+                    >
+                      dakshgoswami2@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl hover:border-white transition-all duration-300 group">
+                <div className="flex items-start gap-4">
+                  <div className="text-white group-hover:scale-110 transition-transform">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-sm font-[port1] mb-1">Phone</p>
+                    <a
+                      href="tel:+919953173892"
+                      className="text-white font-[port1] hover:text-gray-300 transition-colors"
+                    >
+                      +91 9953173892
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Availability Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-full">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              <span className="text-green-400 font-[port1] text-sm">Available for freelance & full-time</span>
+            </div>
           </div>
 
-          {/* Normal Contact Info */}
-          <div className="mt-6 text-gray-300 font-[port1] text-base md:text-lg">
-            <p>
-              Email:{" "}
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=dakshgoswami2@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#2563eb] hover:underline"
+          {/* Right Side - Form */}
+          <div className="rightForm">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 md:p-10 hover:border-white transition-all duration-500">
+              <h3 className="text-2xl md:text-3xl font-[port2] font-bold text-white mb-6">
+                Send a Message
+              </h3>
+              
+              <form
+                action="https://formsubmit.co/dakshgoswami2@gmail.com"
+                method="POST"
+                className="space-y-5"
+                onSubmit={handleSubmit}
               >
-                dakshgoswami2@gmail.com
-              </a>
-            </p>
-            <p>
-              Phone:{" "}
-              <a
-                href="tel:+919953173892"
-                className="text-[#2563eb] hover:underline"
-              >
-                +91 9953173892
-              </a>{" "}
-              <span className="text-gray-400">(+919953173892)</span>
-            </p>
+                {/* Name Input */}
+                <div className="group">
+                  <label className="block text-gray-400 font-[port1] text-sm mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-black border border-zinc-800 text-white font-[port1] rounded-xl focus:outline-none focus:border-white transition-all duration-300 group-hover:border-zinc-700"
+                    placeholder="Jack Sparrow"
+                  />
+                </div>
+
+                {/* Email Input */}
+                <div className="group">
+                  <label className="block text-gray-400 font-[port1] text-sm mb-2">
+                    Your Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-black border border-zinc-800 text-white font-[port1] rounded-xl focus:outline-none focus:border-white transition-all duration-300 group-hover:border-zinc-700"
+                    placeholder="jack@example.com"
+                  />
+                </div>
+
+                {/* Message Textarea */}
+                <div className="group">
+                  <label className="block text-gray-400 font-[port1] text-sm mb-2">
+                    Your Message
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows="5"
+                    required
+                    className="w-full px-4 py-3 bg-black border border-zinc-800 text-white font-[port1] rounded-xl focus:outline-none focus:border-white transition-all duration-300 resize-none group-hover:border-zinc-700"
+                    placeholder="Tell me about your project..."
+                  ></textarea>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="group w-full px-8 py-4 bg-white text-black font-[port1] font-semibold rounded-xl hover:scale-105 transition-all duration-300 hover:shadow-2xl flex items-center justify-center gap-2"
+                >
+                  <span>Send Message</span>
+                  <svg
+                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </button>
+              </form>
+
+              {/* Success Message with Animation */}
+              <AnimatePresence>
+                {sent && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -20, scale: 0.9 }}
+                    className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center gap-3"
+                  >
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.2, type: "spring" }}
+                    >
+                      <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </motion.div>
+                    <p className="text-green-400 font-[port1] font-medium">
+                      Message sent successfully! I'll get back to you soon.
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
 
-        {/* Right Side - Contact Form */}
-        <div className="md:w-1/2">
-          <form
-            action="https://formsubmit.co/dakshgoswami2@gmail.com"
-            method="POST"
-            className="flex flex-col gap-4"
-            onSubmit={handleSubmit}
-          >
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
-              className="font-[port3] px-4 py-3 rounded-lg bg-[#1e293b] border border-[#334155] text-white placeholder-gray-400 focus:outline-none focus:border-[#2563eb]"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              className="font-[port3] px-4 py-3 rounded-lg bg-[#1e293b] border border-[#334155] text-white placeholder-gray-400 focus:outline-none focus:border-[#2563eb]"
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows="4"
-              required
-              className="font-[port3] px-4 py-3 rounded-lg bg-[#1e293b] border border-[#334155] text-white placeholder-gray-400 focus:outline-none focus:border-[#2563eb]"
-            ></textarea>
-
-            <button
-              type="submit"
-              className="relative font-[port2] px-6 py-3 bg-[#2563eb] text-white rounded-lg hover:bg-[#1d4ed8] transition"
-            >
-              Send Message
-            </button>
-
-            {/* Success Animation */}
-            {sent && (
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="text-green-400 font-[port2] mt-3"
-              >
-                ✅ Message Sent Successfully!
-              </motion.p>
-            )}
-          </form>
+        {/* Footer Text */}
+        <div className="text-center mt-20 md:mt-32">
+          <p className="text-gray-500 font-[port1] text-sm md:text-base">
+            Built with ❤️ by Daksh Goswami
+          </p>
+          <p className="text-gray-600 font-[port1] text-xs md:text-sm mt-2">
+            © 2026 All rights reserved
+          </p>
         </div>
       </div>
     </div>

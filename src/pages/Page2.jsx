@@ -1,118 +1,234 @@
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+
 const Page2 = () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    // Animate heading
+    gsap.from(".aboutHeading", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".aboutHeading",
+        start: "top 80%",
+        end: "top 50%",
+        scrub: 1,
+      },
+    });
+
+    // Animate intro text
+    gsap.from(".introText", {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".introText",
+        start: "top 75%",
+        end: "top 50%",
+        scrub: 1,
+      },
+    });
+
+    // Animate skills with stagger
+    gsap.from(".skillItem", {
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.5,
+      stagger: 0.05,
+      scrollTrigger: {
+        trigger: ".skillsGrid",
+        start: "top 70%",
+        end: "top 30%",
+        scrub: 1,
+      },
+    });
+
+    // Animate button
+    gsap.from(".resumeBtn", {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".resumeBtn",
+        start: "top 90%",
+        end: "top 60%",
+        scrub: 1,
+      },
+    });
+  });
+
+  const skills = [
+    { name: "HTML", icon: "/html.png" },
+    { name: "CSS", icon: "/css.png" },
+    { name: "JavaScript", icon: "/javascript.png" },
+    { name: "React.js", icon: "/react.png" },
+    { name: "Redux", icon: "/redux.png" },
+    { name: "Tailwind CSS", icon: "/tailwind-css.png" },
+    { name: "Node.js", icon: "/nodejs.png" },
+    { name: "Express", icon: "/express.png" },
+    { name: "MongoDB", icon: "/mongo-db.png" },
+    { name: "Redis", icon: "/redis.webp" },
+    { name: "GSAP", icon: "/GSAP.png" },
+    { name: "Framer Motion", icon: "/framer.png" },
+    { name: "Langchain", icon: "/langchain.webp" },
+    { name: "Git", icon: "/git.png" },
+    { name: "APIs", icon: "/APIs.png" },
+    { name: "Python", icon: "/python.png" },
+  ];
+
   return (
-    <div id="about" className="bg-[#ffffff] flex items-center justify-center">
-      <div className="rounded-3xl shadow-xl shadow-gray-700 h-[100%] w-[95%] bg-[#0f172a] p-10 flex flex-col items-center overflow-y-auto">
+    <div id="about" className="bg-black min-h-screen py-20 md:py-32 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
         
         {/* Heading */}
-        <h1 className="text-5xl mt-10 md:text-7xl font-[port2] text-white mb-20">
-          Who <span className="text-[#2563eb]">AM I</span>
-        </h1>
+        <div className="aboutHeading text-center mb-12 md:mb-20">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-[port2] font-bold text-white mb-6">
+            About <span className="text-gray-500">Me</span>
+          </h1>
+          <div className="w-20 h-1 bg-white mx-auto"></div>
+        </div>
 
-        {/* Short Intro */}
-        <p className="text-[#91a0b5] text-center max-w-5xl mb-32 px-4 text-xl md:text-2xl font-[port2]">
-          Hi, I’m a passionate <span className="text-[#2563eb] font-semibold">Full-Stack Web Developer </span> 
-          skilled in creating modern, responsive, and dynamic applications. 
-          I love working with both <span className="text-[#2563eb] font-semibold">Frontend & Backend </span> 
-          technologies, building scalable solutions, and integrating powerful tools like 
-          <span className="text-[#2563eb] font-semibold"> AI & Animations</span>.
-        </p>
+        {/* Intro Text */}
+        <div className="introText max-w-4xl mx-auto mb-20 md:mb-32">
+          <p className="text-gray-400 text-center text-lg md:text-2xl font-[port1] leading-relaxed">
+            Hi, I'm a passionate{" "}
+            <span className="text-white font-semibold">Full-Stack Web Developer</span>{" "}
+            skilled in creating modern, responsive, and dynamic applications. I love working with both{" "}
+            <span className="text-white font-semibold">Frontend & Backend</span>{" "}
+            technologies, building scalable solutions, and integrating powerful tools like{" "}
+            <span className="text-white font-semibold">AI & Animations</span>.
+          </p>
+        </div>
+
+        {/* Section Heading */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-[port2] font-bold text-white mb-4">
+            Tech <span className="text-gray-500">Stack</span>
+          </h2>
+          <p className="text-gray-500 font-[port1] text-sm md:text-base">
+            Technologies I work with daily
+          </p>
+        </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-8 mb-10 font-[port2]">
-          {/* Example Skill */}
-          <div className="flex flex-col items-center gap-2">
-            <img src="/html.png" alt="HTML" className="w-16 h-16 object-contain" />
-            <span className="text-white">HTML</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/css.png" alt="CSS" className="w-16 h-16 object-contain" />
-            <span className="text-white">CSS</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/javascript.png" alt="JavaScript" className="w-16 h-16 object-contain" />
-            <span className="text-white">JavaScript</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/react.png" alt="React" className="w-16 h-16 object-contain" />
-            <span className="text-white">React.js</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/redux.png" alt="Redux" className="w-16 h-16 object-contain" />
-            <span className="text-white">Redux</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/tailwind-css.png" alt="Tailwind" className="w-16 h-16 object-contain" />
-            <span className="text-white">Tailwind CSS</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/nodejs.png" alt="Node.js" className="w-16 h-16 object-contain" />
-            <span className="text-white">Node.js</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/express.png" alt="Express" className="w-16 h-16 object-contain" />
-            <span className="text-white">Express</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/mongo-db.png" alt="MongoDB" className="w-16 h-16 object-contain" />
-            <span className="text-white">MongoDB</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/redis.webp" alt="Redis" className="w-16 h-16 object-contain" />
-            <span className="text-white">Redis</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/GSAP.png" alt="GSAP" className="w-16 h-16 object-contain" />
-            <span className="text-white">GSAP</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/framer.png" alt="Framer Motion" className="w-16 h-16 object-contain" />
-            <span className="text-white">Framer Motion</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/langchain.webp" alt="Langchain" className="w-16 h-16 object-contain" />
-            <span className="text-white">Langchain</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/git.png" alt="Git" className="w-16 h-16 object-contain" />
-            <span className="text-white">Git</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/APIs.png" alt="APIs" className="w-16 h-16 object-contain" />
-            <span className="text-white">APIs</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <img src="/python.png" alt="Python" className="w-16 h-16 object-contain" />
-            <span className="text-white">Python</span>
-          </div>
+        <div className="skillsGrid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 md:gap-8 mb-16 md:mb-20">
+          {skills.map((skill, index) => (
+            <div
+              key={index}
+              className="skillItem group flex flex-col items-center gap-3 p-4 rounded-xl border border-zinc-800 bg-zinc-900 hover:border-white hover:bg-zinc-800 transition-all duration-300 hover:scale-110"
+            >
+              <div className="relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                <img
+                  src={skill.icon}
+                  alt={skill.name}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <span className="text-white text-xs md:text-sm font-[port1] text-center group-hover:text-white transition-colors">
+                {skill.name}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* Resume Button */}
-        <a
-          href="/resume.pdf"
-          download
-          className="px-6 py-3 bg-[#2563eb] text-white font-semibold rounded-lg shadow-lg hover:bg-[#1d4ed8] transition font-[port3] mt-8 mb-10"
-        >
-          Download Resume
-        </a>
+        <div className="resumeBtn text-center mt-12 md:mt-16">
+          <a
+            href="/resume.pdf"
+            download
+            className="group inline-flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-white text-black font-[port1] font-semibold rounded-full hover:scale-105 transition-all duration-300 hover:shadow-2xl text-sm md:text-base"
+          >
+            <svg
+              className="w-5 h-5 group-hover:animate-bounce"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            Download Resume
+          </a>
+        </div>
+
+        {/* Extra Info Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 md:mt-32">
+          {[
+            {
+              title: "Education",
+              content: "B.Com from School of Open Learning",
+              icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                </svg>
+              )
+            },
+            {
+              title: "Focus",
+              content: "MERN Stack & Modern Web Development",
+              icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              )
+            },
+            {
+              title: "Availability",
+              content: "Open for Freelance & Full-time roles",
+              icon: (
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )
+            }
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="opacity-0 animate-fadeInUp p-6 md:p-8 rounded-2xl border border-zinc-800 bg-zinc-900 hover:border-white transition-all duration-300 group"
+              style={{ animationDelay: `${2.5 + index * 0.1}s` }}
+            >
+              <div className="text-white mb-4 group-hover:scale-110 transition-transform duration-300">
+                {item.icon}
+              </div>
+              <h3 className="text-xl md:text-2xl font-[port2] font-bold text-white mb-2">
+                {item.title}
+              </h3>
+              <p className="text-gray-400 font-[port1] text-sm md:text-base">
+                {item.content}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+      `}</style>
     </div>
-  )
-}
+  );
+};
 
 export default Page2;
