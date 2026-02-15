@@ -1,39 +1,4 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
-
 const PageMid = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  useGSAP(() => {
-    // Animate heading
-    gsap.from(".mainHeading", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".mainHeading",
-        start: "top 80%",
-        end: "top 50%",
-        scrub: 1,
-      },
-    });
-
-    // Animate cards with stagger
-    gsap.from(".featureCard", {
-      opacity: 0,
-      y: 80,
-      duration: 1,
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: ".cardsContainer",
-        start: "top 75%",
-        end: "top 40%",
-        scrub: 1,
-      },
-    });
-  });
-
   const features = [
     {
       icon: (
@@ -72,7 +37,7 @@ const PageMid = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* Heading */}
-        <div className="mainHeading text-center mb-16 md:mb-24">
+        <div className="text-center mb-16 md:mb-24 animate-fadeIn">
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-[port2] font-bold mb-4">
             What I Do <span className="text-gray-500">Best</span>
           </h2>
@@ -82,11 +47,12 @@ const PageMid = () => {
         </div>
 
         {/* Feature Cards */}
-        <div className="cardsContainer grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="featureCard group relative bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-white transition-all duration-500 hover:scale-105"
+              className="animate-fadeInUp group relative bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-white transition-all duration-500 hover:scale-105"
+              style={{ animationDelay: `${0.2 + index * 0.15}s` }}
             >
               {/* Icon */}
               <div className="text-white mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -129,7 +95,11 @@ const PageMid = () => {
             { number: "100%", label: "Client Satisfaction" },
             { number: "24/7", label: "Available" }
           ].map((stat, index) => (
-            <div key={index} className="opacity-0 animate-fadeIn" style={{ animationDelay: `${2 + index * 0.1}s` }}>
+            <div 
+              key={index} 
+              className="animate-fadeIn"
+              style={{ animationDelay: `${0.6 + index * 0.1}s` }}
+            >
               <h3 className="text-4xl md:text-5xl font-[port2] font-bold text-white mb-2">
                 {stat.number}
               </h3>
@@ -145,6 +115,15 @@ const PageMid = () => {
         @keyframes fadeIn {
           from {
             opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
             transform: translateY(20px);
           }
           to {
@@ -154,7 +133,13 @@ const PageMid = () => {
         }
         
         .animate-fadeIn {
-          animation: fadeIn 0.8s ease-out forwards;
+          opacity: 0;
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .animate-fadeInUp {
+          opacity: 0;
+          animation: fadeInUp 0.6s ease-out forwards;
         }
       `}</style>
     </div>

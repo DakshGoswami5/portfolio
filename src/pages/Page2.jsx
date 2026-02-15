@@ -1,66 +1,4 @@
-
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
-
 const Page2 = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  useGSAP(() => {
-    // Animate heading
-    gsap.from(".aboutHeading", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".aboutHeading",
-        start: "top 80%",
-        end: "top 50%",
-        scrub: 1,
-      },
-    });
-
-    // Animate intro text
-    gsap.from(".introText", {
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".introText",
-        start: "top 75%",
-        end: "top 50%",
-        scrub: 1,
-      },
-    });
-
-    // Animate skills with stagger
-    gsap.from(".skillItem", {
-      opacity: 0,
-      scale: 0.8,
-      duration: 0.5,
-      stagger: 0.05,
-      scrollTrigger: {
-        trigger: ".skillsGrid",
-        start: "top 70%",
-        end: "top 30%",
-        scrub: 1,
-      },
-    });
-
-    // Animate button
-    gsap.from(".resumeBtn", {
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".resumeBtn",
-        start: "top 90%",
-        end: "top 60%",
-        scrub: 1,
-      },
-    });
-  });
-
   const skills = [
     { name: "HTML", icon: "/html.png" },
     { name: "CSS", icon: "/css.png" },
@@ -85,7 +23,7 @@ const Page2 = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* Heading */}
-        <div className="aboutHeading text-center mb-12 md:mb-20">
+        <div className="text-center mb-12 md:mb-20 animate-fadeIn">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-[port2] font-bold text-white mb-6">
             About <span className="text-gray-500">Me</span>
           </h1>
@@ -93,7 +31,7 @@ const Page2 = () => {
         </div>
 
         {/* Intro Text */}
-        <div className="introText max-w-4xl mx-auto mb-20 md:mb-32">
+        <div className="max-w-4xl mx-auto mb-20 md:mb-32 animate-fadeIn" style={{ animationDelay: '0.2s' }}>
           <p className="text-gray-400 text-center text-lg md:text-2xl font-[port1] leading-relaxed">
             Hi, I'm a passionate{" "}
             <span className="text-white font-semibold">Full-Stack Web Developer</span>{" "}
@@ -105,7 +43,7 @@ const Page2 = () => {
         </div>
 
         {/* Section Heading */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-12 md:mb-16 animate-fadeIn" style={{ animationDelay: '0.3s' }}>
           <h2 className="text-3xl md:text-5xl font-[port2] font-bold text-white mb-4">
             Tech <span className="text-gray-500">Stack</span>
           </h2>
@@ -115,11 +53,12 @@ const Page2 = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="skillsGrid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 md:gap-8 mb-16 md:mb-20">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 md:gap-8 mb-16 md:mb-20">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="skillItem group flex flex-col items-center gap-3 p-4 rounded-xl border border-zinc-800 bg-zinc-900 hover:border-white hover:bg-zinc-800 transition-all duration-300 hover:scale-110"
+              className="animate-fadeInScale group flex flex-col items-center gap-3 p-4 rounded-xl border border-zinc-800 bg-zinc-900 hover:border-white hover:bg-zinc-800 transition-all duration-300 hover:scale-110"
+              style={{ animationDelay: `${0.4 + index * 0.03}s` }}
             >
               <div className="relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
                 <img
@@ -128,7 +67,7 @@ const Page2 = () => {
                   className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <span className="text-white text-xs md:text-sm font-[port1] text-center group-hover:text-white transition-colors">
+              <span className="text-white text-xs md:text-sm font-[port1] text-center">
                 {skill.name}
               </span>
             </div>
@@ -136,7 +75,7 @@ const Page2 = () => {
         </div>
 
         {/* Resume Button */}
-        <div className="resumeBtn text-center mt-12 md:mt-16">
+        <div className="text-center mt-12 md:mt-16 animate-fadeInUp" style={{ animationDelay: '0.8s' }}>
           <a
             href="/resume.pdf"
             download
@@ -194,8 +133,8 @@ const Page2 = () => {
           ].map((item, index) => (
             <div
               key={index}
-              className="opacity-0 animate-fadeInUp p-6 md:p-8 rounded-2xl border border-zinc-800 bg-zinc-900 hover:border-white transition-all duration-300 group"
-              style={{ animationDelay: `${2.5 + index * 0.1}s` }}
+              className="animate-fadeInUp p-6 md:p-8 rounded-2xl border border-zinc-800 bg-zinc-900 hover:border-white transition-all duration-300 group"
+              style={{ animationDelay: `${1 + index * 0.1}s` }}
             >
               <div className="text-white mb-4 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
@@ -212,10 +151,19 @@ const Page2 = () => {
       </div>
 
       <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
@@ -223,8 +171,30 @@ const Page2 = () => {
           }
         }
         
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-fadeIn {
+          opacity: 0;
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+        
         .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0;
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .animate-fadeInScale {
+          opacity: 0;
+          animation: fadeInScale 0.5s ease-out forwards;
         }
       `}</style>
     </div>
